@@ -1,0 +1,162 @@
+body {
+  display: flex;
+  background-color: black;
+}
+
+.game-container {
+  width: 500px;
+  height: 730px;
+  position: absolute;
+  left: 80px;
+}
+
+.border-left {
+  width: 80px;
+  height: 790px;
+  position: absolute;
+  background-color: black;
+  z-index: +2;
+}
+
+.border-right {
+  width: 80px;
+  height: 790px;
+  position: absolute;
+  background-color: black;
+  z-index: +2;
+  left: 580px;
+}
+
+.border-top {
+  width: 660px;
+  height: 50px;
+  position: absolute;
+  background-color: black;
+  z-index: +2;
+  top: -50px;
+}
+
+.sky {
+  background-image: url("./background.jpg");
+  width: 500px;
+  height: 580px;
+  position: absolute;
+}
+
+.ground {
+  background-image: url("./Ground.jpg");
+  width: 500px;
+  height: 150px;
+  position: absolute;
+  top: 580px;
+  z-index: +1;
+}
+
+.bird {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  position: absolute;
+  width: 60px;
+  height: 45px;
+  left: 220px;
+  bottom: 100px;
+  transform: rotate(10deg);
+}
+.jump {
+  transition: 0.05s;
+}
+
+.obstacle {
+  background-image: url("./pipe.jpg");
+  width: 60px;
+  height: 300px;
+  position: absolute;
+}
+
+.topObstacle {
+  background-image: url("./pipe.jpg");
+  transform: rotate(180deg);
+  width: 60px;
+  height: 300px;
+  position: absolute;
+}
+
+@keyframes slideright {
+  from {
+    background-position: 10000%;
+  }
+  to {
+    background-position: 0%;
+  }
+}
+
+@-webkit-keyframes slideright {
+  from {
+    background-position: 10000%;
+  }
+  to {
+    background-position: 0%;
+  }
+}
+
+.ground-container {
+  height: 150px;
+  width: 580px;
+  left: 80px;
+  position: absolute;
+}
+
+.ground-moving {
+  position: absolute;
+  top: 580px;
+  height: 150px;
+  background-image: url("./Ground.jpg");
+  background-repeat: repeat-x;
+  animation: slideright 100s infinite linear;
+  -webkit-animation: slideright 100s infinite linear;
+  width: 100%;
+  z-index: +1;
+}
+
+.score {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  color: black;
+  font-family: "Arial", sans-serif;
+  z-index: 10;
+  display: block;
+  user-select: none;
+}
+
+
+.restartGame {
+  width: 200px;
+  height: 200px;
+  margin: 250px 230px;
+  background-color: rgb(199, 89, 89);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Horizontally center the content */
+  text-align: center;
+  display: none;
+  z-index: 2;
+  cursor: pointer;
+  
+}
+
+.restartText {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  padding: 20px; /* Add appropriate units (e.g., pixels) here */
+  font-size: 35px;
+  cursor: pointer;
+}
