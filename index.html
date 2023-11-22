@@ -3,53 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Menu</title>
+    <title>Games</title>
 </head>
-<body style="background-color: rgb(21,25,27);">
-    <div class="container w-100>
-        <div class="grid align-items-center text-center ">
-        <div class="Memory text-center">
-            <div class="d-grid gap-2 col-6 mx-auto">
-                <button id="but1" class="btn btn-primary " type="button" onclick="toggleMemoryIframe()">Memory</button>
-                <button style="display: none;" id="back" class="btn btn-primary " type="button" onclick="backToMenu()" >Go back to main menu</button>
+
+<body style="background-color: #f6f6ed; width: 100%; height: 100vh;">
+
+    <div class="container justify-content-center align-items-center h-100 p-3">
+            <div class="grid item Memory text-center mx-2 mt-5 ">
+                <div class="d-grid gap-5 col-6 mx-auto">
+                    <button style="height: 100px; font-size: 35px;" id="but1" class="btn btn-primary mb-3 mt-5" type="button" onclick="toggleMemoryIframe()">Memory</button>
+                    
+                </div>
+                <div class="grid d-flex justify-content-center">
+                    <button style="display: none; height: 60px; font-size: 20px;" id="back" class="btn btn-primary mb-2" type="button" onclick="backToMenu()" >Go back to main menu</button>
+                </div>
+                <div class="grid mt-1" style="display: none;" id="MemoryIframe">
+                    <iframe id="myIframe" style=" height: 800px; width: 1600px; overflow-y: hidden;" src="/MemoryGame/index.html" frameborder="0" scrolling="no"></iframe>
+                </div><br>
             </div>
-            <div class="grid mt-5" style="display: none;" id="MemoryIframe">
-                <iframe id="myIframe" style="height: 800px; width: 1600px; overflow-y: hidden;" src="/MemoryGame/index.html" frameborder="0"></iframe>
+
+
+
+            <div class="grid item Flappybird text-center">
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button style="height: 100px; font-size: 35px;" id="but2" class="btn btn-primary mb-3" type="button" onclick="toggleFlappybirdIframe()">Flappybird</button>
+                </div>
+
+                <div style="display: none;" id="FlappybirdIframe">
+                    <iframe style="height: 780px; width: 680px;" src="/flappyBird/index.html" frameborder="0" scrolling="no"></iframe><br>
+                </div><br>
+            </div>
+
+
+
+            <div class="grid item StickHero text-center">
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button style="height: 100px; font-size: 35px;" id="but3" class="btn btn-primary mb-3" type="button" onclick="toggleStickHeroIframe()">Stick Hero</button>
+                </div>
+
+                <div style="display: none;" id="StickHeroIframe"> 
+                    <iframe style="height: 780px; width: 700px;" src="/stick hero/index.html" frameborder="0" scrolling="no"></iframe>
+                </div>
             </div><br>
-        </div>
 
-        <div class="Flappybird text-center">
-            <div class="d-grid gap-2 col-6 mx-auto">
-                <button id="but2" class="btn btn-primary" type="button" onclick="toggleFlappybirdIframe()">Flappybird</button>
-            </div>
-            <div style="display: none;" id="FlappybirdIframe">
-                <iframe style="height: 780px; width: 700px;" src="/flappyBird/index.html" frameborder="0"></iframe><br>
-            </div><br>
-        </div>
 
-        <div class="StickHero text-center">
-            <div class="d-grid gap-2 col-6 mx-auto">
-                <button id="but3" class="btn btn-primary" type="button" onclick="toggleStickHeroIframe()">Stick Hero</button>
-            </div>
-            <div style="display: none;" id="StickHeroIframe">
-                <iframe style="height: 780px; width: 700px;" src="/stick hero/index.html" frameborder="0"></iframe>
-            </div>
-        </div><br>
 
-        <div class="Pacman text-center">
-            <div class="d-grid gap-2 col-6 mx-auto">
-                <button id="but4" class="btn btn-primary" type="button" onclick="togglePacmanIframe()">Pacman</button>
-            </div>
-            <div style="display: none;" id="PacmanIframe">
-                <iframe style="height: 600px; width: 500px;" src="/PACMAN/index.html" frameborder="0"></iframe>
-            </div>
-        </div>
+            <div class="grid item Pacman text-center">
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button style="height: 100px; font-size: 35px;" id="but4" class="btn btn-primary mb-3" type="button" onclick="togglePacmanIframe()">Pacman</button>
+                </div>
+
+                <div style="display: none;" id="PacmanIframe">
+                    <iframe style="height: 600px; width: 500px;" src="/PACMAN/index.html" frameborder="0" scrolling="no"></iframe>
+                </div>
+            </div>   
     </div>
 </div>
+    
+<div style="position: sticky; bottom: 0;">
+    <a href="" target="_blank">
+        <img style="height: auto; width: 300px;" src="logo.png" alt="logo">
+    </a>
+</div>
+    
     <script>
+
+
         function toggleMemoryIframe() {
             var memoryIframe = document.getElementById('MemoryIframe');
             var isHidden = memoryIframe.style.display === 'none' || memoryIframe.style.display === '';
