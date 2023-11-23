@@ -1,0 +1,23 @@
+{
+  "name": "games",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Piotras245/Games.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Piotras245/Games/issues"
+  },
+  "homepage": "https://github.com/Piotras245/Games#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "fs-extra": "^11.1.1"
+  }
+}

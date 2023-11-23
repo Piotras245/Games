@@ -168,19 +168,19 @@ const ghosts = [
   new Ghost({
     position: {
       x: Boundary.width * 6 + Boundary.width / 2,
-      y: Boundary.height + Boundary.height / 2,
+      y: Boundary.height * 9 + Boundary.height / 2,
     },
     velocity: {
       x: Ghost.speed,
       y: 0,
     },
-    color: "blue",
+    color: "pink",
   }),
 
   new Ghost({
     position: {
-      x: Boundary.width * 6 + Boundary.width / 2,
-      y: Boundary.height + Boundary.height / 2,
+      x: Boundary.width  + Boundary.width / 2,
+      y: Boundary.height * 11 + Boundary.height / 2,
     },
     velocity: {
       x: Ghost.speed,
@@ -216,7 +216,7 @@ const keys = {
 };
 
 let LastKey = "";
-
+let startTime = Date.now();
 let score = 0;
 
 function createImage(src) {
@@ -466,6 +466,14 @@ function animate() {
   animationID = requestAnimationFrame(animate);
   c.clearRect(0, 0, canvas.width, canvas.height);
 
+  //timer
+  const currentTime = Date.now();
+  const elapsedTimeInSeconds = Math.floor((currentTime - startTime) / 1000);
+
+  const timerDisplay = document.getElementById("timer");
+  timerDisplay.textContent = `Time: ${elapsedTimeInSeconds} seconds`;
+
+  
   if (keys.w.pressed && LastKey === "w") {
     for (let i = 0; i < boundaries.length; i++) {
       const boundary = boundaries[i];
@@ -757,7 +765,16 @@ window.addEventListener("keyup", ({ key }) => {
   }
 });
 
+document.getElementById("startButton").addEventListener("click", startGame);
 
+function startGame() {
+    document.getElementById("startButton").style.display = "none"; // Hide the start button
+    startTime = Date.now(); // Reset the start time
+    score = 0; // Reset the score
+    scorel.innerHTML = "Score: 0";
+    location.reload(); 
+    animate(); 
+}
 function restartGame() {
   location.reload(); 
 }
