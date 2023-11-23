@@ -8,9 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const ground = document.querySelector(".ground-moving");
   const scoreDisplay = document.querySelector(".score");
 
-
-
-
   let birdLeft = 220;
   let birdBottom = 100;
   let gravity = 2;
