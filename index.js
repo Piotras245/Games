@@ -16,7 +16,7 @@ const PORT = 4000;
 // app.listen(PORT, () => {
 //   console.log("Server started");
 // });
-async function example2 (fileName, jsonObj) {
+const writeToJSONFile = async (fileName, jsonObj) => {
   try {
     await fs.writeJson(`./dbJSON/${fileName}.json`, jsonObj)
     console.log('success!')
@@ -25,9 +25,7 @@ async function example2 (fileName, jsonObj) {
   }
 }
 
-
-
-async function example (fileName) {
+const readJSONFile = async (fileName) => {
   let response;
   try {
     const packageObj = await fs.readJson(`./dbJSON/${fileName}.json`)
@@ -39,9 +37,84 @@ async function example (fileName) {
   return null;
 }
 
+const addFlappyScore = async (newScore, scoreList) => {
+
+  let response = await readJSONFile("Flappy");
+  let newScoreList = [...scoreList, newScore];
+
+  const scoreSorted = newScoreList.slice().sort((a, b) => b.score - a.score);
+  newScoreList = scoreSorted.slice(0, 10);
+
+  await writeToJSONFile("Flappy", newScoreList);
+  return true;
+}
+
+const addStickScore = async (newScore, scoreList) => {
+
+  let response = await readJSONFile("Stick");
+  let newScoreList = [...scoreList, newScore];
+
+  const scoreSorted = newScoreList.slice().sort((a, b) => b.score - a.score);
+  newScoreList = scoreSorted.slice(0, 10);
+
+  await writeToJSONFile("Stick", newScoreList);
+  return true;
+}
+
+const addMemoryScore = async (newScore, scoreList) => {
+
+  let response = await readJSONFile("Mem");
+  let newScoreList = [...scoreList, newScore];
+
+  const scoreSorted = newScoreList.slice().sort((a, b) => b.score - a.score);
+  newScoreList = scoreSorted.slice(0, 10);
+
+  await writeToJSONFile("Mem", newScoreList);
+  return true;
+}
+
+const addPacmanScore = async (newScore, scoreList) => {
+
+  let response = await readJSONFile("Pac");
+  let newScoreList = [...scoreList, newScore];
+
+  const scoreSorted = newScoreList.slice().sort((a, b) => b.score - a.score);
+  newScoreList = scoreSorted.slice(0, 10);
+
+  await writeToJSONFile("Pac", newScoreList);
+  return true;
+}
+
 (async ()=>{
-  let response = await example("Flappy");
-  await example2("Pac",response);
-  console.log(response);
-  console.log(response[0]);
+  try {
+    const newScoreFlappy = { name: "Piter", score: 100 };
+    const scoreListFlappy = await readJSONFile("Flappy");
+
+    const resultFlappy = await addFlappyScore(newScoreFlappy, scoreListFlappy);
+    // console.log(resultFlappy);
+
+    const newScoreStick = { name: "Joshep", score: 150 };
+    const scoreListStick = await readJSONFile("Stick");
+
+    const resultStick = await addStickScore(newScoreStick, scoreListStick);
+    // console.log(resultStick);
+
+    const newScoreMemory = { name: "Micky", time: 25, flips: 40 };
+    const scoreListMemory = await readJSONFile("Mem");
+    
+    const resultMemory  = await addMemoryScore(newScoreMemory, scoreListMemory);
+    // console.log(resultMemory);
+
+
+    const newScorePacman = { name: "Marian", time: 25, score: 300 };
+    const scoreListPacman = await readJSONFile("Pac");
+    
+    const resultPacman = await addPacmanScore(newScorePacman, scoreListPacman);
+    // console.log(resultPacman);
+
+
+  } catch (error) {
+    console.error(error);
+  }
+
 })();

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body >
+    <div class="container">
+        <div id="grid" class="grid">
+          
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        var jsonData = [{"name":"Piter","score":100},{"name":"Piter","score":100},{"name":"Piter","score":100},{"name":"Piter","score":100},{"name":"Piter","score":100},{"name":"Piter","score":100},{"name":"Piter","score":100},{"name":"Piter","score":100},{"name":"Piter","score":100},{"name":"Piter","score":100}];
+
+        var grid = document.getElementById("grid");
+
+        jsonData.forEach(function(item) {
+
+            var row = document.createElement("div");
+            row.classList.add("row");
+
+            var nameColumn = document.createElement("div");
+            nameColumn.classList.add("col");
+            nameColumn.textContent = "Name: " + item.name;
+
+            var scoreColumn = document.createElement("div");
+            scoreColumn.classList.add("col");
+            scoreColumn.textContent = "Score: " + item.score;
+
+            row.appendChild(nameColumn);
+            row.appendChild(scoreColumn);
+
+            grid.appendChild(row);
+        });
+    </script>
+</body>
+</html>
